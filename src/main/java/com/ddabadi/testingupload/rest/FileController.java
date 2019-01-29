@@ -15,10 +15,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("api")
+
 public class FileController {
 
     @Autowired private FileServiceImpl fileService;
 
+    @CrossOrigin
     @PostMapping("uploadfile")
     public String uploadFile(@RequestParam("file")MultipartFile file){
 
@@ -26,7 +28,7 @@ public class FileController {
 
         return fileName;
     }
-
+    @CrossOrigin
     @GetMapping("prevFile")
     public ResponseEntity<Resource> previewFile(HttpServletRequest request) throws IOException {
         Resource resource = fileService.loadFile();
